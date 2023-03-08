@@ -1,57 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import InputPeso from './components/input'
+import React, {useState} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Home from './/pages/Home/index';
+import Churrasco from './/pages/Churrasco/index';
+import IMC from './/pages/IMC/index';
 
+
+const Stack = createStackNavigator();
 
 export default function App() {
+  
   return (
-    <View style={styles.container}>
-			<Text style={styles.title}>Calcule seu IMC</Text>
-			<Text style={styles.subtitle}>O índice de massa corporal é uma medida internacional usada para calcular se uma pessoa está no peso ideal.</Text>
-			<View style={styles.body}>
-				<InputPeso/>
-			</View>
-    </View>
+      <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen  name="Home" component={Home} />
+        <Stack.Screen  name="IMC" component={IMC} />
+        <Stack.Screen  name="Churrasco" component={Churrasco} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
-	title: {
-		color:'white',
-		fontSize: 30,
-		fontWeight: 'bold',
-		width: '100%',
-		justifyContent: 'center',
-		textAlign: 'center',
-		marginBottom: 20
-	},
-	subtitle: {
-		color: 'white',
-		fontSize: 18,
-		width: '80%',
-		textAlign: 'center',
-		marginBottom: 20		
-	},
   container: {
     flex: 1,
-    backgroundColor: '#282828',
-    alignItems: 'center',
+    backgroundColor: '#000', 
     justifyContent: 'center',
-		display: 'flex',
   },
-	button:{
-		borderRadius: 4,
-		fontSize: 20,
-		width: '60%',
-		margin: 20
-	},
-	body:{
-		backgroundColor: '#393939',
-		width: '90%',
-		borderRadius:4,
-		padding: 10,
-		textAlign: 'center',
-		marginTop: 40
-	}
-
 });
